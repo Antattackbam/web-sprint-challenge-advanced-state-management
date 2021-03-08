@@ -14,7 +14,6 @@ class App extends Component {
         <Header />
 
         <main>
-          test
           <SmurfList/>
           <AddForm/>
         </main>
