@@ -22,7 +22,6 @@ export const fetchSmurfs = () => (dispatch) => {
 
 export const addSmurf = (name,position,nickname,description) => {
     const newSmurf = {
-        id: Date.now(),
         name: name,
         position: position,
         nickname: nickname,
@@ -33,7 +32,7 @@ export const addSmurf = (name,position,nickname,description) => {
 }
 
 export const displayError = (error) => {
-    return({ type: DISPLAY_ERROR, payload: error})
+    return{ type: DISPLAY_ERROR, payload: error};
 }
 
 //Task List:
