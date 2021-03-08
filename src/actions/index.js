@@ -4,17 +4,36 @@ import Feedback from 'react-bootstrap/esm/Feedback';
 export const FETCHING_START = 'FETCHING_START'
 export const FETCHING_SUCCESS = 'FETCHING_SUCCESS'
 export const FETCHING_FAILURE = 'FETCHING_FAILURE'
+export const ADDING_SMURF = 'ADDING_SMURF'
+export const DISPLAY_ERROR = 'DISPLAY_ERROR'
 
 export const fetchSmurfs = () => (dispatch) => {
     dispatch({type: FETCHING_START})
 
-    axios.get(`http://localhost:3333/smurfs`)
+    axios
+    .get(`http://localhost:3333/smurfs`)
     .then( res => {
         dispatch({FETCHING_SUCCESS, payload: res.data})
     })
     .catch(err => {
         dispatch({type: FETCHING_FAILURE, payload: err})
     })
+}
+
+export const addSmurf = (name,position,nickname,description) => {
+    const newSmurf = {
+        id: Date.now(),
+        name: name,
+        position: position,
+        nickname: nickname,
+        description: description
+    }
+
+    return ({type: ADDING_SMURF, payload: newSmurf})
+}
+
+export const displayError = (error) => {
+    return({ type: DISPLAY_ERROR, payload: error})
 }
 
 //Task List:
