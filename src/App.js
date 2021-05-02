@@ -20,6 +20,7 @@ class App extends Component {
 
         <main>
           <SmurfList/>
+          test
           <AddForm/>
         </main>
       </div>
