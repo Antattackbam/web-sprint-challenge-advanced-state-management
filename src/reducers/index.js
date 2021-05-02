@@ -1,34 +1,51 @@
-import { FETCHING_START, FETCHING_SUCCESS, FETCHING_FAILURE, ADDING_SMURF, DISPLAY_ERROR} from '../actions/index';
-
-export const initialState = {
+import {
+    FETCH_SMURFS_START,
+    FETCH_SMURFS_SUCCESS,
+    FETCH_SMURFS_FAILURE,
+    ADD_SMURF,
+    ADD_SMURF_FAILURE,
+  } from "../actions";
+  
+  export const initialState = {
     smurfs: [],
     isLoading: false,
-    error: ''
-}
-
- const reducer = ( state = initialState, action)=>{
-    switch(action.type){
-        case FETCHING_START:
-            return {...state, isLoading: true, smurfs: action.payload}
-
-        case FETCHING_SUCCESS:
-            return {...state, smurfs: action.payload, isLoading: false}
-
-        case FETCHING_FAILURE:
-            return {...state, isLoading: false, error: action.payload}
-
-        case ADDING_SMURF:
-            return {...state, smurfs: [...state.smurfs, action.payload]}
-
-        case DISPLAY_ERROR:
-            return {...state, isLoading: false, errorMessage: "required"}
-        default:
-            return state;
+    errorMessage: "",
+  };
+  
+  const reducer = (state = initialState, action) => {
+    //   dispatch({ type: FETCH_SMURFS_START });
+    switch (action.type) {
+      case FETCH_SMURFS_SUCCESS:
+        return {
+          ...state,
+          smurfs: action.payload,
+        };
+      case FETCH_SMURFS_FAILURE:
+        return {
+          ...state,
+          errorMessage: action.payload,
+        };
+      case FETCH_SMURFS_START:
+        return {
+          ...state,
+          isLoading: true,
+        };
+      case ADD_SMURF:
+        return {
+          ...state,
+          smurfs: [...state.smurfs, action.payload],
+        };
+      case ADD_SMURF_FAILURE:
+        return {
+          ...state,
+          errorMessage: action.payload,
+        };
+      default:
+        return state;
     }
-}
-
-export default reducer;
-
+  };
+  
+  export default reducer;
 //Task List:
 //1. Adds the following state values into the initialState:
 //  - an array of smurfs
