@@ -3,12 +3,14 @@ import React, { Component } from "react";
 import AddForm from './components/AddForm';
 import SmurfList from './components/SmurfList';
 import Header from './components/Header';
+import { fetchData } from './actions/index.js'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./App.css";
 
 class App extends Component {
   render() {
+    fetchData()
     return (
       <div className="App">
         <Header />
