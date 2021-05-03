@@ -19,8 +19,8 @@ export const fetchData = () => {
         dispatch({ type: FETCH_SMURFS_SUCCESS, payload: res.data });
       })
       .catch((err) => {
-        console.log(err.message);
-        dispatch({ type: FETCH_SMURFS_FAILURE, payload: err.message });
+        console.log(err.Errormessage);
+        dispatch({ type: FETCH_SMURFS_FAILURE, payload: err.Errormessage });
       });
   };
 };
@@ -28,7 +28,7 @@ export const fetchData = () => {
 //2. Add add smurf action:
 export const addSmurf = (smurf) => {
   console.log(smurf);
-  if (!smurf) {
+  if (smurf.name === "" || smurf.nickname === "" || smurf.position === "") {
     return {
       type: ADD_SMURF_FAILURE,
     };
@@ -43,7 +43,7 @@ export const addSmurf = (smurf) => {
 export const addSmurfFailure = (message) => {
   return {
     type: FETCH_SMURFS_FAILURE,
-    payload: message,
+    payload: "must include name, position, and nickname",
   };
 };
 //              - dispatch an error text action if smurf data does not includes a name, nickname and position field

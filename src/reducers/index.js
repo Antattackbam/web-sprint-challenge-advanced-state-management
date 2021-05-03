@@ -26,7 +26,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        errorMessage: action.payload,
+        error: action.payload,
       };
     case FETCH_SMURFS_START:
       return {
@@ -41,7 +41,7 @@ const reducer = (state = initialState, action) => {
     case ADD_SMURF_FAILURE:
       return {
         ...state,
-        errorMessage: action.payload,
+        error: "Name, position and nickname fields are required.",
       };
     default:
       return state;
